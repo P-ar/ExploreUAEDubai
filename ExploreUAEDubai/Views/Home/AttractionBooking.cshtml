@@ -1,0 +1,32 @@
+﻿@model ExploreUAEDubai.Models.Booking
+
+@{
+    ViewData["Title"] = "AttractionBooking";
+}
+
+<h1 class="text-center heading">Register Your Attraction Booking</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="AttractionBooking">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="AttractionID" class="control-label"></label>
+                <select asp-for="AttractionID" class="form-control" asp-items="ViewBag.AttractionID"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="BookingDate" class="control-label"></label>
+                <input asp-for="BookingDate" class="form-control" />
+                <span asp-validation-for="BookingDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Confirm Your Booking" class="btn btn-warning" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

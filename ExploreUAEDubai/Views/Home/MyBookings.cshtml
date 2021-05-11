@@ -1,0 +1,48 @@
+﻿@model IEnumerable<ExploreUAEDubai.Models.Booking>
+
+@{
+    ViewData["Title"] = "MyBookings";
+}
+
+<h1 class="text-center heading">My Attraction Bookings</h1>
+<hr />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BookingDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Attraction.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Attraction.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Attraction.ContactNo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @item.BookingDate.ToString("dddd, dd MMMM yyyy")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Attraction.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Attraction.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Attraction.ContactNo)
+            </td>
+            <td>
+                <a asp-action="CancelBooking" class="btn btn-dark" onclick="return confirm('Are You Sure to Remove This Attraction Booking?')" asp-route-id="@item.BookingID">Cancel Booking</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,27 @@
+﻿@model IEnumerable<ExploreUAEDubai.Models.Attraction>
+
+@{
+    ViewData["Title"] = "AllAttraction";
+}
+
+<h1 class="heading text-center">All Attraction Details</h1>
+<div class="row" style="margin-bottom:50px;">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 mb-3">
+            <div class="card w-100">
+                <center>
+                    <img src="~/images/Dubai-Pass.png" alt="" style="width:100%">
+                </center>
+                <div class="card-body">
+                    <h5 class="card-text">
+                        @item.Name
+                    </h5>
+                    <p>@item.Description</p>
+                    <p>Helpline No.: @item.ContactNo</p>
+                </div>
+
+            </div>
+        </div>
+    }
+</div>

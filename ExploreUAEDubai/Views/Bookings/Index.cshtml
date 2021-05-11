@@ -1,0 +1,48 @@
+﻿@model IEnumerable<ExploreUAEDubai.Models.Booking>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center heading">All Attraction Bookings</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BookingDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Attraction.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Attraction.ContactNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserID)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.BookingDate.ToString("dddd, dd MMMM yyyy")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Attraction.Name)
+                </td>                
+                <td>
+                    @Html.DisplayFor(modelItem => item.Attraction.ContactNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserID)
+                </td>
+                <td>
+                    <a asp-action="Details" class="btn btn-warning" asp-route-id="@item.UserID">View Visitor Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

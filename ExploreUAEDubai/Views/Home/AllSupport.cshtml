@@ -1,0 +1,25 @@
+﻿@model IEnumerable<ExploreUAEDubai.Models.Support>
+
+@{
+    ViewData["Title"] = "AllSupport";
+}
+
+<h1 class="heading text-center">Support - Frequenty Asked Questions</h1>
+<div id="accordion">
+    @foreach (var item in Model)
+    {
+        <div class="card">
+            <div class="card-header">
+                <a class="card-link" style="color:darkgoldenrod; font-weight:bold; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" data-toggle="collapse" href="@string.Format("#collapse{0}",item.SupportID)">
+                    @item.Question
+                </a>
+            </div>
+            <div id="@string.Format("collapse{0}",item.SupportID)" class="collapse" data-parent="#accordion">
+                <div class="card-body">
+                    @item.Answer
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
